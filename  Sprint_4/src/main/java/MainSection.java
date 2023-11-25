@@ -3,6 +3,8 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
+import java.util.Objects;
+
 public class MainSection {
     private WebDriver driver;
     public MainSection(WebDriver driver){
@@ -25,6 +27,14 @@ public class MainSection {
     }
     public void pressorderButtonHeader() {
         driver.findElement(orderButtonHeader).click();
+    }
+
+    public void pressDynamicButton(String buttonLocation){
+        if (Objects.equals(buttonLocation, "Upper")) {
+            pressorderButtonHeader();
+        } if ((Objects.equals(buttonLocation, "Lower"))) {
+            scrollAndClickLowerOrderButton();
+        }
     }
 
     public void scrollAndClickLowerOrderButton() {

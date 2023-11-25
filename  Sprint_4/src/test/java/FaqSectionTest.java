@@ -37,17 +37,20 @@ import static org.junit.Assert.assertEquals;
             };
         }
 
-    @Before
-    public void startUp() {
-        WebDriverManager.chromedriver().setup();
-    }
 
     private WebDriver driver;
 
+    @Before
+    public void startUp() {
+        WebDriverManager.chromedriver().setup();
+        driver = new ChromeDriver();
+    }
+
     @Test
     public void checkFaqSection() {
-        driver = new ChromeDriver();
+
         driver.get("https://qa-scooter.praktikum-services.ru/");
+
 
         MainSection objMainSection = new MainSection(driver);
         objMainSection.pressorderCookiesButton();

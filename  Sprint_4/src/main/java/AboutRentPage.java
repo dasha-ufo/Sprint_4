@@ -1,6 +1,8 @@
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
+import java.util.Objects;
+
 public class AboutRentPage {
     private WebDriver driver;
     public AboutRentPage(WebDriver driver){
@@ -32,7 +34,15 @@ public class AboutRentPage {
 
     //установить цвет самоката
     public void chooseBlackColourOfSamokat() {
-        driver.findElement(checkboxInputGrey).click();
+        driver.findElement(checkboxInputBlack).click();
+    }
+    //выбрать цвет самоката по параметру
+    public void chooseColourOfSamokat(String colour) {
+        if (Objects.equals(colour, "Black")) {
+            driver.findElement(checkboxInputBlack).click();
+        } if ((Objects.equals(colour, "Grey"))) {
+            driver.findElement(checkboxInputGrey).click();
+        }
     }
 
     //оставляем комментарий для курьера
@@ -43,5 +53,7 @@ public class AboutRentPage {
     public void clickConfirmOrder() {
         driver.findElement(confirmOrderLowButton).click();
     }
+
+
 
 }
